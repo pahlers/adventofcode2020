@@ -1,2 +1,19 @@
-# adventofcode2020
-https://adventofcode.com/2020
+# Advent Of Code 2020
+
+## Install
+
+Use `npm i` to install the dependencies.
+
+
+## Usage
+
+Start the code as `npm start ./day_<number>/part_<number>.ts`.
+
+Example:
+```shell
+npm start ./day_1/part_1.ts
+```
+
+## Reference
+
+- https://adventofcode.com/2020
