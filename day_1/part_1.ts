@@ -14,7 +14,7 @@ import {is2020} from './is2020';
 
 console.log(`--- Day 1, part 1: Report Repair ---\n`, input);
 
-let output: number[] = input
+const output: number[] = input
     .reduce(getCombinations, [])
     .map(multiplyValues);
 
