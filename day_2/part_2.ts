@@ -8,6 +8,8 @@ import {processInput} from './processInput';
 //     '2-9 c: ccccccccc'
 // ];
 
+console.log(`--- Day 2, part 2: Password Philosophy ---\n`, input);
+
 const output = input.map(processInput)
     .filter(isValidPassword);
 
