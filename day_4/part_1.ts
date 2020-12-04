@@ -1,6 +1,7 @@
 import {processPassports} from './processPassports';
 import {Passport} from './Passport';
 import {input} from './input';
+import {isRequired} from './validators';
 
 
 // const input = `ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
@@ -18,13 +19,13 @@ import {input} from './input';
 // iyr:2011 ecl:brn hgt:59in`;
 
 const passportRequiredFields = {
-    byr: isSet, // (Birth Year)
-    iyr: isSet, // (Issue Year)
-    eyr: isSet, // (Expiration Year)
-    hgt: isSet, // (Height)
-    hcl: isSet, // (Hair Color)
-    ecl: isSet, // (Eye Color)
-    pid: isSet, // (Passport ID)
+    byr: isRequired, // (Birth Year)
+    iyr: isRequired, // (Issue Year)
+    eyr: isRequired, // (Expiration Year)
+    hgt: isRequired, // (Height)
+    hcl: isRequired, // (Hair Color)
+    ecl: isRequired, // (Eye Color)
+    pid: isRequired, // (Passport ID)
 };
 
 console.log(`--- Day 4, part 1: Passport Processing ---\n`, input);
@@ -39,8 +40,4 @@ function isValidPassport(passport: Passport) {
         .every(([key, test]) => {
             return test(passport[key]);
         });
-}
-
-function isSet(value: string): boolean {
-    return !!value;
 }
