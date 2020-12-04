@@ -7,7 +7,7 @@ Use `npm i` to install the dependencies.
 
 ## Usage
 
-Start the code as `npm start ./day_<number>/part_<number>.ts`.
+Start the code with `npm start ./day_<number>/part_<number>.ts`.
 
 Example:
 ```shell
