@@ -22,8 +22,9 @@ const output = processBoardingpasses(input)
 
 if (output) {
     console.log('-- Output -- ', output.seatID + 1);
+
 } else {
-    console.log('-- Output -- No boardpasses missing');
+    console.log('-- Output -- No boardingpasses missing');
 }
 
 
