@@ -35,7 +35,7 @@ const passportRequiredFields = {
     pid: isPassportID, // (Passport ID)
 };
 
-console.log(`--- Day 4, part 1: Passport Processing ---\n`, input);
+console.log(`--- Day 4, part 2: Passport Processing ---\n`, input);
 
 const output = processPassports(input)
     .filter(isValidPassport);
