@@ -1,5 +1,5 @@
 import {input} from './input';
-import {processBags, processBagsContent} from './processBags';
+import {processBags} from './processBags';
 import {BagDescription} from './BagDescription';
 
 // const input = `light red bags contain 1 bright white bag, 2 muted yellow bags.
@@ -14,10 +14,7 @@ import {BagDescription} from './BagDescription';
 
 console.log(`--- Day 7, part 1: Handy Haversacks ---`, input);
 
-const output = input.split('\n')
-    .filter(value => !!value)
-    .map(processBags)
-    .map(processBagsContent)
+const output = processBags(input)
     .filter(bag => bag.type !== 'shiny gold')
     .filter(getBagsContainShinyGoldBag)
 

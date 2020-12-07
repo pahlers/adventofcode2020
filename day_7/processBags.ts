@@ -1,10 +1,16 @@
 import {BagDescription} from './BagDescription';
 
-export function processBags(bag: string): BagDescription {
-    const [main, content] = bag.split(' bags contain ');
+export function processBags(input: string): BagDescription[]{
+ return input.split('\n') // Spit into rows
+     .filter(value => !!value) // Filter empty rows
+     .map(processBag) // Process the bags
+     .map(processBagContent); // Process content of the bags
+}
 
-    console.log(main)
+function processBag(value: string): BagDescription {
+    const [main, content] = value.split(' bags contain '); // Split value in main and content part
 
+    // Create a bag
     return {
         amount: 1,
         type: main,
@@ -22,10 +28,13 @@ export function processBags(bag: string): BagDescription {
                 }];
             }, [])
     }
-
 }
 
-function fillContent(bag: BagDescription, list: BagDescription[]) {
+function processBagContent(bag: BagDescription, index: number, self: BagDescription[]): BagDescription {
+    return {...bag, content: (bag.content || []).map(bag => getBagContent(bag, self))};
+}
+
+function getBagContent(bag: BagDescription, list: BagDescription[]): BagDescription {
     const {amount, type} = bag;
     const found = list.find(b => b.type === type);
 
@@ -33,13 +42,7 @@ function fillContent(bag: BagDescription, list: BagDescription[]) {
         throw Error('Missing bag description');
     }
 
-    const content: BagDescription[] = (found.content || []).map(b => fillContent(b, list));
+    const content: BagDescription[] = (found.content || []).map(b => getBagContent(b, list));
 
     return {amount, type, content};
-}
-
-export function processBagsContent(bag: BagDescription, index: number, self: BagDescription[]): BagDescription {
-    bag.content = (bag.content || []).map(bag => fillContent(bag, self));
-
-    return bag;
 }

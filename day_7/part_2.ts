@@ -1,5 +1,5 @@
 import {input} from './input';
-import {processBags, processBagsContent} from './processBags';
+import {processBags} from './processBags';
 import {BagDescription} from './BagDescription';
 
 // const input = `shiny gold bags contain 2 dark red bags.
@@ -12,16 +12,12 @@ import {BagDescription} from './BagDescription';
 
 console.log(`--- Day 7, part 2: Handy Haversacks ---`, input);
 
-const output = input.split('\n')
-    .filter(value => !!value)
-    .map(processBags)
-    .map(processBagsContent)
+const output = processBags(input)
     .filter(bag => bag.type === 'shiny gold')
     .map(getNumberOfBags)
-    .map(bagAmount => bagAmount - 1);
+    .map(bagAmount => bagAmount - 1); // Don't count the `shiny gold` bag
 
-console.log(`--- output ---`, JSON.stringify(output, null, 2));
-// console.log(`--- output ---`, output);
+console.log(`--- output ---`, output);
 
 function getNumberOfBags(bag: BagDescription): number {
     return (bag.amount * (bag.content || []).reduce((acc, b) => acc + getNumberOfBags(b), 1));
