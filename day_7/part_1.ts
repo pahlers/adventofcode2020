@@ -18,7 +18,6 @@ const output = processBags(input)
     .filter(bag => bag.type !== 'shiny gold')
     .filter(getBagsContainShinyGoldBag)
 
-// console.log(`--- output ---`, JSON.stringify(output, null, 2));
 console.log(`--- output ---`, output.length);
 
 function getBagsContainShinyGoldBag(bag: BagDescription): boolean {
